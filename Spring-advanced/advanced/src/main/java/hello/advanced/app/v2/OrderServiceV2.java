@@ -17,7 +17,7 @@ public class OrderServiceV2 {
 
         TraceStatus status = null;
         try {
-            status = trace.beginSync(traceId, "OrderServiceV2.request()");
+            status = trace.beginSync(traceId, "OrderServiceV3.request()");
             orderRepositoryV2.save(status.getTraceId(), itemId);
             trace.end(status);
         } catch (Exception e) {

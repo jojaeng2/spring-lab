@@ -17,7 +17,7 @@ public class OrderRepositoryV2 {
 
         TraceStatus status = null;
         try {
-            status = trace.beginSync(traceId, "OrderRepositoryV2.request()");
+            status = trace.beginSync(traceId, "OrderRepositoryV3.request()");
 
             // 저장 로직
             if(itemId.equals("ex")) {
