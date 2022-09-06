@@ -23,6 +23,6 @@ public class OrderServiceV4 {
             }
         };
 
-        template.execute("OrderServiceV4.request()");
+        template.execute("OrderServiceV5.request()");
     }
 }
