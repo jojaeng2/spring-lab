@@ -2,7 +2,6 @@ package hello.advanced.app.v2;
 
 import hello.advanced.trace.TraceId;
 import hello.advanced.trace.TraceStatus;
-import hello.advanced.trace.hellotrace.HelloTraceV1;
 import hello.advanced.trace.hellotrace.HelloTraceV2;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -17,7 +16,7 @@ public class OrderRepositoryV2 {
 
         TraceStatus status = null;
         try {
-            status = trace.beginSync(traceId, "OrderRepositoryV3.request()");
+            status = trace.beginSync(traceId, "OrderRepositoryV2.request()");
 
             // 저장 로직
             if(itemId.equals("ex")) {
