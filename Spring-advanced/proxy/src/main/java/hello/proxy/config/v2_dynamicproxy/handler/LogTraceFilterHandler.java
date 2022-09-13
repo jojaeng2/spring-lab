@@ -29,7 +29,7 @@ public class LogTraceFilterHandler implements InvocationHandler {
         if(!PatternMatchUtils.simpleMatch(patterns, methodName)) {
             return method.invoke(target, args);
         }
-        
+
         TraceStatus status = null;
 
         try {
