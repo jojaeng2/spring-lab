@@ -9,6 +9,7 @@ public class TimeAdvice implements MethodInterceptor {
 
     @Override
     public Object invoke(MethodInvocation invocation) throws Throwable {
+
         log.info("TimeProxy 실행");
         long startTime = System.currentTimeMillis();
 
