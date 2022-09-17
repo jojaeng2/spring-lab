@@ -1,0 +1,9 @@
+spring:
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL95Dialect
+    properties:
+      hibernate:
+        show_sql: false
+        format_sql: true
+    hibernate:
+      ddl-auto: create
