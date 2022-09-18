@@ -1,10 +1,9 @@
-package com.example.JpaRepository.service;
+package com.example.JpaRepository.JpaRepositoryInterface.service;
 
 
-import com.example.JpaRepository.domain.Users;
-import com.example.JpaRepository.repository.UsersRepository;
+import com.example.JpaRepository.JpaRepositoryInterface.domain.Users;
+import com.example.JpaRepository.JpaRepositoryInterface.repository.UsersRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 @Service

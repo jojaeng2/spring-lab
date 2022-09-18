@@ -1,10 +1,9 @@
 package com.example.JpaRepository;
 
-import com.example.JpaRepository.domain.Users;
-import com.example.JpaRepository.service.UsersService;
+import com.example.JpaRepository.JpaRepositoryInterface.domain.Users;
+import com.example.JpaRepository.JpaRepositoryInterface.service.UsersService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest

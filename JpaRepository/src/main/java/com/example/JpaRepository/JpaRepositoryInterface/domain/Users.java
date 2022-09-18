@@ -1,4 +1,4 @@
-package com.example.JpaRepository.domain;
+package com.example.JpaRepository.JpaRepositoryInterface.domain;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
