@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 public class BasicRepositoryImpl implements BasicRepository{
 
     public void save(int number) {
-        log.info("BasicRepositoryImpl save = {}", number);
+
     }
 }

@@ -13,7 +13,6 @@ public class BasicController {
     private final BasicService basicService;
 
     public void receiveGetMapping(int number) {
-        log.info("BasicController save = {}", number);
         basicService.save(number);
     }
 }

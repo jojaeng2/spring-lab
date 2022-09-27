@@ -14,7 +14,6 @@ public class BasicServiceImpl implements BasicService{
 
     @Override
     public void save(int number) {
-        log.info("BasicServiceImpl save = {}", number);
         repository.save(number);
     }
 }

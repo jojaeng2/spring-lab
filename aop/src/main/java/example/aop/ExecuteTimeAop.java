@@ -17,6 +17,8 @@ public class ExecuteTimeAop {
     // 패키지 내의 controller package에 존재하는 클래스
     @Before("example.aop.config.Pointcuts.controllerAndServiceAndRepository()")
     public void calculateExecutionTime(JoinPoint joinPoint){
-        log.info("ExecuteTimeAop Success");
+//        log.info(joinPoint.getName());
+        log.info(joinPoint.getTarget().getClass().getName()); // 클래스 이름
+        log.info(joinPoint.getSignature().getName());         // 메서드 이름
     }
 }
