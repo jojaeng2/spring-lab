@@ -19,80 +19,54 @@ public class XffAOP {
     public void addHttpServletRequest(ProceedingJoinPoint joinPoint) throws Throwable {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
 
-        String ip = request.getHeader("X-Forwarded-For");
-        String browser = "";
-        String userIp = request.getRemoteUser();
-        String userBrowser = request.getHeader("User-Agent");
-
-        if(userBrowser.contains("Trident")) {												// IE
-            browser = "ie";
-        } else if(userBrowser.contains("Edge")) {											// Edge
-            browser = "edge";
-        } else if(userBrowser.contains("Whale")) { 										// Naver Whale
-            browser = "whale";
-        } else if(userBrowser.contains("Opera") || userBrowser.contains("OPR")) { 		// Opera
-            browser = "opera";
-        } else if(userBrowser.contains("Firefox")) { 										 // Firefox
-            browser = "firefox";
-        } else if(userBrowser.contains("Safari") && !userBrowser.contains("Chrome")) {	 // Safari
-            browser = "safari";
-        } else if(userBrowser.contains("Chrome")) {										 // Chrome
-            browser = "chrome";
-        }
-
-
-
-        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-
-            ip = request.getHeader("Proxy-Client-IP");
-
-        }
-
-        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-
-            ip = request.getHeader("WL-Proxy-Client-IP");
-
-        }
-
-        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-
-            ip = request.getHeader("HTTP_CLIENT_IP");
-
-        }
-
-        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-
-            ip = request.getHeader("HTTP_X_FORWARDED_FOR");
-
-        }
-
-        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-
-            ip = request.getHeader("X-Real-IP");
-
-        }
-
-        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-
-            ip = request.getHeader("X-RealIP");
-
-        }
-
-        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-
-            ip = request.getHeader("REMOTE_ADDR");
-
-        }
-
-        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-
-            ip = request.getRemoteAddr();
-
-        }
-
-
+        String ip = findIP(request.getHeader("X-Forwarded-For"), request);
+        String browser = findBrowser(request.getHeader("User-Agent"));
         log.info("ip = {} ", ip);
         log.info("userBrowser = {} ", browser);
         joinPoint.proceed();
+    }
+
+    private String findBrowser(String info) {
+        String browser = "Unknown";
+        if(info.contains("Trident")) browser = "ie";
+        else if(info.contains("Edge")) browser = "edge";
+        else if(info.contains("Whale")) browser = "whale";
+        else if(info.contains("Opera") || info.contains("OPR")) browser = "opera";
+        else if(info.contains("Firefox")) browser = "firefox";
+        else if(info.contains("Safari") && !info.contains("Chrome")) browser = "safari";
+        else if(info.contains("Chrome")) browser = "chrome";
+        return browser;
+    }
+
+    private String findIP(String ip, HttpServletRequest request) {
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = request.getHeader("Proxy-Client-IP");
+        }
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = request.getHeader("WL-Proxy-Client-IP");
+        }
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = request.getHeader("HTTP_CLIENT_IP");
+        }
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = request.getHeader("HTTP_X_FORWARDED_FOR");
+        }
+
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = request.getHeader("X-Real-IP");
+        }
+
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = request.getHeader("X-RealIP");
+        }
+
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = request.getHeader("REMOTE_ADDR");
+        }
+
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = request.getRemoteAddr();
+        }
+        return ip;
     }
 }
