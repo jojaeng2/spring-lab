@@ -18,7 +18,6 @@ public class XffAOP {
     @Around("example.xff.config.XffPointcuts.allService()")
     public void addHttpServletRequest(ProceedingJoinPoint joinPoint) throws Throwable {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
-
         String ip = findIP(request.getHeader("X-Forwarded-For"), request);
         String browser = findBrowser(request.getHeader("User-Agent"));
         log.info("ip = {} ", ip);
