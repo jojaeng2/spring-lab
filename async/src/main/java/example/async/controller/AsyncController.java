@@ -1,6 +1,6 @@
-package example.async.config;
+package example.async.controller;
 
-import example.async.AsyncService;
+import example.async.service.AsyncService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,9 +15,7 @@ public class AsyncController {
 
     @GetMapping("/async")
     public String getAsync() {
-        for(int i=1; i<=5; i++) {
-            asyncService.execute(i);
-        }
+        asyncService.execute();
         return "ok";
     }
 

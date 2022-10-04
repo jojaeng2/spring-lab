@@ -1,4 +1,4 @@
-package example.async;
+package example.async.service;
 
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,9 +13,8 @@ import java.util.concurrent.Future;
 @NoArgsConstructor
 public class AsyncService {
 
-    @Async
-    public void execute(int i) {
-        log.info("Async = {}", i);
+    public void execute() {
+        log.info("AsyncService execute()");
     }
 
     @Async
